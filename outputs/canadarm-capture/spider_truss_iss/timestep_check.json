@@ -1,0 +1,12 @@
+{
+  "comparison_duration_s": 3,
+  "steps_s": [
+    0.001,
+    0.0005
+  ],
+  "maximum_body_position_difference_m": 3.610818125981211e-06,
+  "maximum_motor_joint_angle_difference_rad": 0.0002654752257138515,
+  "maximum_tip_difference_mm": 0.002309479170074097,
+  "final_grips_match": true,
+  "passed": true
+}

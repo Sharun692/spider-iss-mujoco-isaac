@@ -1,0 +1,24 @@
+{
+  "trajectory": "physx_1ms",
+  "duration_s": 3.0,
+  "finite": true,
+  "source_geometry_fk_max_position_error_m": 3.1592318216365506e-07,
+  "minimum_attached_grippers": 3,
+  "released_each_leg": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "recaptured_each_leg": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "peak_motor_torque_Nm": 6.5562627690302815,
+  "body_advance_m": 0.0021619796752929688,
+  "sampled_energy_balance_max_residual_J": 0.09992195531190214,
+  "sampled_energy_balance_relative_residual": 0.19972546818918455,
+  "energy_audit_note": "Sampled 100 Hz trapezoidal power audit; includes implicit-integration dissipation and sampling/event error. This is a diagnostic, not experimental validation."
+}

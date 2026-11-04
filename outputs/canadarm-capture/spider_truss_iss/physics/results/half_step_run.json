@@ -1,0 +1,11 @@
+{
+  "duration_s": 3.0,
+  "step_s": 0.0005,
+  "runtime_s": 29.21215180400759,
+  "integrator": "MuJoCo mj_step RK4 for robot and 16 FEM coordinates",
+  "control_callbacks": 36002,
+  "MATLAB_runtime_used": false,
+  "Simulink_runtime_used": false,
+  "ROS2_used": false,
+  "attachment_scope": "same captured compliant bonds; geometry contact disabled"
+}

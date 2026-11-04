@@ -1,0 +1,22 @@
+{
+  "duration_s": 120.0,
+  "final_body_x_m": 5.350261470161984,
+  "gait_progress_s": 96.0,
+  "minimum_grips": 3,
+  "final_grips": 4,
+  "peak_tip_displacement_mm": 84.42551044550727,
+  "final_tip_displacement_mm": -6.6272601882987905,
+  "peak_motor_torque_Nm": 24.903533707901577,
+  "maximum_reference_tip_difference_mm": 0.011197516392384699,
+  "relative_reference_tip_difference": 0.00013262559772489238,
+  "maximum_reference_body_x_difference_mm": 0.00226917974099905,
+  "major_sample_energy_relative_residual": 0.009055512299385449,
+  "work_quadrature": "MuJoCo RK4 internal-stage weights; output recorded before discrete supervisor commit",
+  "energy_maximum_residual_J": 0.03863793333978131,
+  "energy_relative_residual": 0.0028553656274890172,
+  "MATLAB_runtime_used": false,
+  "Simulink_runtime_used": false,
+  "continuous_integrator": "MuJoCo RK4; robot and 16 FEM modal joints",
+  "attachment_scope": "captured spring-dashpot bonds, geometry contact disabled",
+  "accepted": true
+}

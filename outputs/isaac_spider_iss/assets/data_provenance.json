@@ -1,0 +1,21 @@
+{
+  "length_units": "metres",
+  "mass_units": "kg",
+  "angle_units": "radians",
+  "time_units": "seconds",
+  "robot_source": "Existing user spider_mujoco_only research project; copied parameters.json",
+  "truss_length_m": 6,
+  "truss_width_m": 0.3,
+  "motor_torque_limit_Nm": 40,
+  "motor_Kp_Nm_per_rad": 500,
+  "motor_Kd_Nm_s_per_rad": 20,
+  "grasp_stiffness_N_per_m": 20000,
+  "grasp_damping_N_s_per_m": 160,
+  "capture_gap_limit_m": 0.006,
+  "capture_speed_limit_m_per_s": 0.16,
+  "robot_properties_status": "Existing assumed research values, not measured hardware values",
+  "station_mesh_source": "NASA ISS (B), originally downloaded by canadarm-capture",
+  "earth_imagery_source": "NASA GSFC Blue Marble and companion cloud mosaic",
+  "gripper_contact_status": "Compliant attachments; no resolved jaw friction",
+  "new_gripper_friction_coefficients_invented": false
+}

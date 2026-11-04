@@ -1,0 +1,10 @@
+.venv/
+venv/
+python_deps/
+__pycache__/
+*.py[cod]
+*.log
+.env
+.env.*
+.DS_Store
+*.rebuilt.xml

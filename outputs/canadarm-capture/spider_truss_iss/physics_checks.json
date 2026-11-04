@@ -1,0 +1,25 @@
+{
+  "integration": "New MuJoCo RK4 integration at 1 ms, robot 18 DOF plus 16 FEM modes",
+  "duration_s": 36.0,
+  "body_advance_m": 1.3034910561254112,
+  "minimum_attached_grippers": 3,
+  "release_events_each_leg": [
+    12,
+    12,
+    12,
+    12
+  ],
+  "reattachment_events_each_leg": [
+    12,
+    12,
+    12,
+    12
+  ],
+  "peak_motor_torque_Nm": 18.58379424161708,
+  "peak_gripper_force_N": 121.82004950290568,
+  "peak_tip_displacement_mm": 39.58614163072465,
+  "energy_residual_J": 0.01357546526983322,
+  "relative_energy_residual": 0.0016943985146318874,
+  "scope": "Force-coupled compliant attachments and modal flexible truss. No resolved jaw friction, spacecraft recoil, or experimentally validated hardware properties.",
+  "passed": true
+}

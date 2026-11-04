@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-04",
+  "python_files_syntax_checked": 17,
+  "rebuilt_bridge_structurally_identical": true,
+  "parameter_and_geometry_copies_identical": true,
+  "original_files_byte_identical": 65,
+  "portability_changed_files": [
+    "outputs/isaac_spider_iss/launch.sh",
+    "outputs/canadarm-capture/scripts/render_truss_iss.py",
+    "outputs/canadarm-capture/scripts/render_truss_iss_full.py"
+  ],
+  "video_checks": [
+    {
+      "path": "outputs/canadarm-capture/spider_truss_iss/spider_iss_full_sideview.mp4",
+      "width": 1280,
+      "height": 720,
+      "r_frame_rate": "30/1",
+      "duration": "136.000000",
+      "nb_frames": "4080"
+    },
+    {
+      "path": "outputs/isaac_spider_iss/results/isaac_iss_full_sideview.mp4",
+      "width": 1280,
+      "height": 720,
+      "r_frame_rate": "30/1",
+      "duration": "136.000000",
+      "nb_frames": "4080"
+    }
+  ],
+  "relative_doc_links_exist": true,
+  "full_gpu_simulation_rerun_for_export": false,
+  "corrected_fullrate_energy_audit_recomputed": true,
+  "recomputed_energy_relative_residual": 0.017035546545391342
+}

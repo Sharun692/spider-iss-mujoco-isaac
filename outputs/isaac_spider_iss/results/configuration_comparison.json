@@ -1,0 +1,7 @@
+{
+  "comparison": "0.5 ms / 64 position iterations versus 1 ms / 32 position iterations",
+  "max_body_position_difference_m": 0.0003834739763988182,
+  "max_motor_angle_difference_rad": 0.01137542724609375,
+  "peak_motor_torque_Nm": 6.5562627690302815,
+  "minimum_grips": 3
+}

@@ -1,0 +1,342 @@
+[
+  {
+    "path": "outputs/isaac_spider_iss/src/check_dynamics.py",
+    "sha256": "da5682fc40eb50d1c1729cacc8b602a2c2b5798de761610b21e180e319ea01b2",
+    "bytes": 6237
+  },
+  {
+    "path": "outputs/isaac_spider_iss/src/logic.py",
+    "sha256": "8763fdae2b9b09e8e69d03435cd59a008d80e30b8d7fe04aaff1f7b506acca77",
+    "bytes": 4646
+  },
+  {
+    "path": "outputs/isaac_spider_iss/src/scene_rtx.py",
+    "sha256": "7cefb2f1f8f4ae66f55c4be196834d74f126c3da66ee88a71fd23a6c2b8efdbe",
+    "bytes": 10644
+  },
+  {
+    "path": "outputs/isaac_spider_iss/src/render_rtx.py",
+    "sha256": "bc6cd87e660b434296808db0aa966fb2dda49b0dd2cb00839e17b9d87d0d5e99",
+    "bytes": 3415
+  },
+  {
+    "path": "outputs/isaac_spider_iss/src/run_physx.py",
+    "sha256": "fcbb884e14020f9b830b088741528fc25aff76d8b46fb87f177e0594466971ae",
+    "bytes": 8408
+  },
+  {
+    "path": "outputs/isaac_spider_iss/assets/station_body.npz",
+    "sha256": "c4838757154475bae8060c57d56a94c88ed24f86c3a7564a1298d32d9372c744",
+    "bytes": 859235
+  },
+  {
+    "path": "outputs/isaac_spider_iss/assets/station_arrays.npz",
+    "sha256": "4f56769541f2117ce41d2f880a5d5c88eab3ecd212c3f76d3a8f977a7daded4e",
+    "bytes": 2528
+  },
+  {
+    "path": "outputs/isaac_spider_iss/assets/earth_composite.jpg",
+    "sha256": "b88503855e877b9c2b1712bc37e8bb35471dcfea6a7836f7eb0869dfcf8fea92",
+    "bytes": 9703609
+  },
+  {
+    "path": "outputs/isaac_spider_iss/assets/parameters.json",
+    "sha256": "7718f9b5fe6824603b141b4a22995c9d853fb1e2ed9cc3636456c1221a4f63d1",
+    "bytes": 125207
+  },
+  {
+    "path": "outputs/isaac_spider_iss/assets/geometry.json",
+    "sha256": "240d2532fb31b7cbc9b4be38a7a9532aa48520ad917efd6342573abafe7455b3",
+    "bytes": 33495
+  },
+  {
+    "path": "outputs/isaac_spider_iss/assets/data_provenance.json",
+    "sha256": "db08bb104dba1b20075b4b0ed82959d8dba9cdbb54201e36417a39ff2a86ede6",
+    "bytes": 873
+  },
+  {
+    "path": "outputs/isaac_spider_iss/source_archive/scene_rtx_before_instancing.py",
+    "sha256": "5ab38b9a410cca895d4ce738fdb5a732c602d4c3ef3822c2cca7530be3d81f67",
+    "bytes": 9370
+  },
+  {
+    "path": "outputs/isaac_spider_iss/source_archive/full_run_script_used.py",
+    "sha256": "4deca7410830ed1b56d29076f46aecb19067dc0c47c612b572ccc37e29139df7",
+    "bytes": 7507
+  },
+  {
+    "path": "outputs/isaac_spider_iss/source_archive/render_rtx_delivery.py",
+    "sha256": "bc6cd87e660b434296808db0aa966fb2dda49b0dd2cb00839e17b9d87d0d5e99",
+    "bytes": 3415
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_no_sleep_checks.json",
+    "sha256": "5364b0c14d1f8068a941b20cf154d25698f883bec76ef07da3b816203a0c9970",
+    "bytes": 764
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_pgs_checks.json",
+    "sha256": "1d42eee00d24f61efe4dc86a7b7476f2f415cb0a5b6a412d323a634f15f1cdec",
+    "bytes": 837
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_fullrate_audit.json",
+    "sha256": "1631f862d605231c891019acdb71775c4aac534e6ac108df965a47d117164dae",
+    "bytes": 1013
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_force_origin_checks.json",
+    "sha256": "15aa125d64ef4d857fea41173e4e1572ad120f3c508ec679515a112c855c1a36",
+    "bytes": 845
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_fullrate_audit_checks.json",
+    "sha256": "c547d805dbc89f0c6abe1b62dce90d660b26f2fd0a533c269131e221f504af5e",
+    "bytes": 1014
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_pilot.json",
+    "sha256": "d30637c3593a6a5864711fc9499cdfb2f8321042028ae7f60436234f43c7b092",
+    "bytes": 1019
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_full.json",
+    "sha256": "9b92f69ae4c5c7c523ae32195aa30c6bdf1237acba1ddcfb54d363d865ee369d",
+    "bytes": 18510
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/configuration_comparison.json",
+    "sha256": "4dfe13672e658a1e69f9a99725a399142199284d78f3cafbfccb43e919b39716",
+    "bytes": 274
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_candidate.json",
+    "sha256": "c9c0da22c6a056670b34bb59a65dd435748ac4bd70923b292c650743564f496c",
+    "bytes": 1000
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_full_checks.json",
+    "sha256": "8a6571eb710e6a343d6f8a07f1dd9c089151f63cd3d3134e9769ee9e714fa0b1",
+    "bytes": 973
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_pilot_checks.json",
+    "sha256": "1b4587c9c4b98949c7342677bdf80cf683a7c5467b972ef2a51436e19d96eac4",
+    "bytes": 673
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_1ms_checks.json",
+    "sha256": "5e41fd227a7822315032bf37b1cffedff0af786e1b60e96e5d3e3b2fad5752e9",
+    "bytes": 694
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_pgs.json",
+    "sha256": "102f7035dfa5b426e8f0176704dbb371f6cec29a27252c8a2a17d23491759a34",
+    "bytes": 1015
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_force_origin.json",
+    "sha256": "d51fffff343ee0fb74144d0d3d0ba58cac163b43e2f08ca985afcc59f123ff6e",
+    "bytes": 1013
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/delivery_checks.json",
+    "sha256": "e947d98dcf45301d599968f002978f4c67446f777fcd9d3bf005e19a8e225757",
+    "bytes": 1401
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/reference_sampling_check_checks.json",
+    "sha256": "c391da6465a8ca40cc0bfba8ebccd97057ef748e2f05edaefe78fcb08bc1e1de",
+    "bytes": 688
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_1ms.json",
+    "sha256": "932e3b03cd3a125dcb5247a652ef23e8943860ac0ad8a79029ce163344251d7d",
+    "bytes": 1014
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_no_sleep.json",
+    "sha256": "1b0debfe4499018158dace129dfce90e8dca6dff79ee22eb2d02302b3be2c6c2",
+    "bytes": 1014
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/physics/src/logic.py",
+    "sha256": "8763fdae2b9b09e8e69d03435cd59a008d80e30b8d7fe04aaff1f7b506acca77",
+    "bytes": 4646
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/physics/src/run.py",
+    "sha256": "f5ec0760322f4f778d6d5521fc06b1824b42962a57c4927fbf30e459d54ebd47",
+    "bytes": 5044
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/physics/assets/spider_render.xml",
+    "sha256": "85fe236da699fcd4e18fa23ddd3bae8969c71357cf6f78f4a63950160b14e51d",
+    "bytes": 75926
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/physics/assets/parameters.json",
+    "sha256": "7718f9b5fe6824603b141b4a22995c9d853fb1e2ed9cc3636456c1221a4f63d1",
+    "bytes": 125207
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/physics/assets/spider_modal_plant.xml",
+    "sha256": "e190e68fde7813aa83ca449bc5b0216b5016f51b4df2ca86b7d9ce15e77afc82",
+    "bytes": 13898
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/physics/assets/geometry.json",
+    "sha256": "240d2532fb31b7cbc9b4be38a7a9532aa48520ad917efd6342573abafe7455b3",
+    "bytes": 33495
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/physics_checks.json",
+    "sha256": "256ecda5c6f0b7b5fe0707a20419fc42c8aac03339c29527be249fc3430092e6",
+    "bytes": 749
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/full_video_checks.json",
+    "sha256": "aee00de7a42e39e5130a0c7c944fd94c2999e472aa1021022ff49a182458c080",
+    "bytes": 322
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/full_mission_validation.json",
+    "sha256": "3e287c8f21d75f4d6a01c8c7163f01e019878e21c85feb93cf851e0061ea74e0",
+    "bytes": 990
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/timestep_check.json",
+    "sha256": "a7a24703051e884f4a46ea4608e26859a77a855504fa3f2320e7d25d83224eb6",
+    "bytes": 306
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/physics/results/half_step_run.json",
+    "sha256": "3e22f8b4a5397da5be1a827612ca463f63428e7124736beb6485c38731897e40",
+    "bytes": 348
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/physics/results/iss_walk_run.json",
+    "sha256": "214318805de5f8bad09efc8e635790754294011f749853f5ae7849115b3b310b",
+    "bytes": 350
+  },
+  {
+    "path": "outputs/isaac_spider_iss/bridge_mjcf.xml",
+    "sha256": "7251bb6a1506df8319cc654f6c28e05e44a2eccb44f3e019d74947104a81bc69",
+    "bytes": 13983
+  },
+  {
+    "path": "outputs/isaac_spider_iss/imported_spider.usda",
+    "sha256": "14ec559107e5e95435176a101229fe54418d6abd2461fa45c9ec98b1b08954cf",
+    "bytes": 118623
+  },
+  {
+    "path": "outputs/isaac_spider_iss/launch.sh",
+    "sha256": "4d48347ac42bb8a7e49c7030f47c2f9b2f8f293adc1e5020316c618431d85adc",
+    "bytes": 809
+  },
+  {
+    "path": "outputs/isaac_spider_iss/README.md",
+    "sha256": "60b0e54b5e38e4d2568d46a621865a6ba87c35363d5ed5302618c166fc22e2df",
+    "bytes": 6830
+  },
+  {
+    "path": "outputs/isaac_spider_iss/ASSUMPTIONS.md",
+    "sha256": "694d96e3c5e40fe71f33a5723e853e3f5589db292c804ba29bc2dc51589562bc",
+    "bytes": 2971
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_full.npz",
+    "sha256": "060d2a17faffe09a4d68b73e136f2d9d256dfe33d86f5729f7044346a64a4aab",
+    "bytes": 10599887
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/physx_fullrate_audit.npz",
+    "sha256": "ea5a44489f595b4e7c5dd2b83f2db45630b7a2ef0e4dcd464ba12960daf57ab4",
+    "bytes": 3586039
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/isaac_iss_full_sideview.mp4",
+    "sha256": "3bf5daa3ca563f4d37c2524572fad9f5301219e4e08e507673129a93e31510be",
+    "bytes": 24117475
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/isaac_preview_0.png",
+    "sha256": "4b18e63e97d5f1dcfad65ef2ebb75276f5e1640bd7042a6d354740137360106b",
+    "bytes": 676466
+  },
+  {
+    "path": "outputs/isaac_spider_iss/results/isaac_preview_12.png",
+    "sha256": "a339991802359f071bb8292ee6f0fe4fa2b5a86e58b064a1d2fc1ccd0e7bddee",
+    "bytes": 557161
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/physics/results/full_mission.npz",
+    "sha256": "65295bcfd6f46f5fb9f01d3e23762ad3c914ee5a3dd1ad83b63b2f78b61d12a0",
+    "bytes": 93838338
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/physics/results/iss_walk.npz",
+    "sha256": "e0053a70a49db76635bc12c2a291b0a5d63d2f26519988ae87879f2b2e7098a8",
+    "bytes": 28199575
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/README.md",
+    "sha256": "d18bb02f738191213365c9c8a461457a6b2863e2825bbc9314af107df021e0c5",
+    "bytes": 4042
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_truss_iss/spider_iss_full_sideview.mp4",
+    "sha256": "b6ad2fb891a00d16d7bac609f8b83d8db663fcf026d574e7fe53999babd76014",
+    "bytes": 26315047
+  },
+  {
+    "path": "outputs/canadarm-capture/scripts/render_truss_iss.py",
+    "sha256": "b077073dea50c141c8336f76d87805ae5c45fcb63840ec3389ca613363bbbff5",
+    "bytes": 6265
+  },
+  {
+    "path": "outputs/canadarm-capture/scripts/render_truss_iss_full.py",
+    "sha256": "5e89a90c46862cf26cec27edfb52ee152c9b87af0e8f6b9a28bddc253e087311",
+    "bytes": 6663
+  },
+  {
+    "path": "outputs/canadarm-capture/scripts/earth_background.py",
+    "sha256": "56fa20535323e018e92e52f764109e989a1320c60eec5ee8a67750416779f61e",
+    "bytes": 2038
+  },
+  {
+    "path": "outputs/canadarm-capture/scripts/check_truss_run.py",
+    "sha256": "e45792ed52f7edebccc757d305122fc2554827287d7b87e39d13b08559677d74",
+    "bytes": 1499
+  },
+  {
+    "path": "outputs/canadarm-capture/scripts/fetch_assets.py",
+    "sha256": "3255f50c9bca78b63ca0296d7d175e1fb25418d9199ee95470651cde11c9abb3",
+    "bytes": 5770
+  },
+  {
+    "path": "outputs/canadarm-capture/assets/processed/station_body.stl",
+    "sha256": "1769e61b6f725f946f2b509972ce1be5f7747be1211cb69e8e564d6f131c5bbc",
+    "bytes": 8587684
+  },
+  {
+    "path": "outputs/canadarm-capture/assets/processed/station_arrays.stl",
+    "sha256": "b1a1f9ff99e1ff66e4e2ced4e759483bee44d3953065d31ce392e21e2f9fcc6a",
+    "bytes": 22484
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_iss/earth_nasa_8192.png",
+    "sha256": "aaddcd967a9f09fb2d7ef50ff452bebfcf10192c520465d5eb1ad8446c716e98",
+    "bytes": 24147269
+  },
+  {
+    "path": "outputs/canadarm-capture/spider_iss/earth_clouds_nasa.jpg",
+    "sha256": "daddaad84d7a33bbbc86cdda3f591099f57cee8607b7bcf3b67eb7e4f7a1c793",
+    "bytes": 829367
+  },
+  {
+    "path": "outputs/canadarm-capture/LICENSE",
+    "sha256": "ec153d0a11815d5fd3b922aaf158bf6c8bdb40fc53b9f218c91b38f7daee5958",
+    "bytes": 1066
+  }
+]

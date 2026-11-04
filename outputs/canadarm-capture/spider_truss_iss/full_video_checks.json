@@ -1,0 +1,12 @@
+{
+  "duration_s": 120.0,
+  "body_start_x_m": 0.65,
+  "body_end_x_m": 5.350261470161984,
+  "max_body_position_difference_from_fresh_36s_run_m": 0.0,
+  "minimum_grips": 3,
+  "finite": true,
+  "video_duration_s": 136,
+  "fixed_side_camera_from_video_s": 12,
+  "full_motion_playback_speed": 1,
+  "camera_tracks_robot": false
+}

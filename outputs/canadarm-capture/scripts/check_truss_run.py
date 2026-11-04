@@ -1,0 +1,7 @@
+from pathlib import Path
+import json,numpy as np
+root=Path(__file__).resolve().parents[1]/'spider_truss_iss'
+z=np.load(root/'physics/results/iss_walk.npz');r=z['data'];energy=r[:,-6];residual=energy-energy[0]-z['rk4_work'];flags=r[:,74:78];torque=r[:,87:99];forces=r[:,99:111].reshape(-1,4,3)
+report={'integration':'New MuJoCo RK4 integration at 1 ms, robot 18 DOF plus 16 FEM modes','duration_s':float(r[-1,0]),'body_advance_m':float(r[-1,1]-r[0,1]),'minimum_attached_grippers':int(flags.sum(1).min()),'release_events_each_leg':((np.diff(flags,axis=0)<0).sum(0)).tolist(),'reattachment_events_each_leg':((np.diff(flags,axis=0)>0).sum(0)).tolist(),'peak_motor_torque_Nm':float(abs(torque).max()),'peak_gripper_force_N':float(np.linalg.norm(forces,axis=2).max()),'peak_tip_displacement_mm':float(abs(r[:,-2]).max()*1000),'energy_residual_J':float(abs(residual).max()),'relative_energy_residual':float(abs(residual).max()/max(np.ptp(energy),1e-8)),'scope':'Force-coupled compliant attachments and modal flexible truss. No resolved jaw friction, spacecraft recoil, or experimentally validated hardware properties.'}
+report['passed']=bool(np.isfinite(r).all() and report['minimum_attached_grippers']>=3 and min(report['reattachment_events_each_leg'])>0 and report['body_advance_m']>.5 and report['peak_motor_torque_Nm']<=40.000001 and report['relative_energy_residual']<.05)
+(root/'physics_checks.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2));assert report['passed']

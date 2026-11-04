@@ -1,0 +1,70 @@
+{
+  "engine": "Isaac Sim 5.1 / GPU PhysX",
+  "gpu_dynamics_enabled": true,
+  "device": "cuda:0",
+  "duration_s": 3.0,
+  "step_s": 0.002,
+  "elapsed_s": 14.022153214000014,
+  "body_advance_m": 0.003922104835510254,
+  "minimum_grips": 3,
+  "peak_motor_torque_Nm": 40.0,
+  "grip_events": [
+    [
+      0.076,
+      0.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      0.5640000000000001,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      0.8260000000000001,
+      1.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    [
+      1.314,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      1.576,
+      1.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    [
+      2.064,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      2.326,
+      1.0,
+      1.0,
+      1.0,
+      0.0
+    ],
+    [
+      2.814,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "scope": "Existing assumed compliant bonds and 16-mode FEM; no resolved jaw friction; TGS integration differs from MuJoCo RK4."
+}

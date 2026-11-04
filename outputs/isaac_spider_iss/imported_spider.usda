@@ -1,0 +1,3109 @@
+#usda 1.0
+(
+    defaultPrim = "Spider"
+    endTimeCode = 1000000
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:lightcache:cached:dontResolveConflicts = 1
+                int omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                int omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                uint omni:rtx:viewTile:limit = 4294967295
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (640, 360)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+        }
+    }
+}
+
+def "World"
+{
+    def Xform "Spider"
+    {
+        def Scope "Looks"
+        {
+        }
+
+        def Scope "joints"
+        {
+            def PhysicsRevoluteJoint "yaw_0" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/robot_body>
+                rel physics:body1 = </World/Spider/robot_body/yaw_carrier_0>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (-0.2, -0.1, -0.07)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, -0.7071068, 0)
+                quatf physics:localRot1 = (0.7071068, 0, -0.7071068, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsRevoluteJoint "shoulder_0" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/yaw_carrier_0>
+                rel physics:body1 = </World/Spider/robot_body/link_0_0>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, 0, -0.7071068)
+                quatf physics:localRot1 = (0.7071068, 0, 0, -0.7071068)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsRevoluteJoint "knee_0" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/link_0_0>
+                rel physics:body1 = </World/Spider/robot_body/link_0_1>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, -0.27)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, 0, -0.7071068)
+                quatf physics:localRot1 = (0.7071068, 0, 0, -0.7071068)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsFixedJoint "grip_0" (
+                prepend apiSchemas = ["IsaacJointAPI"]
+            )
+            {
+                string isaac:nameOverride
+                float[] isaac:physics:AccelerationLimit
+                int isaac:physics:index
+                float[] isaac:physics:JerkLimit
+                int isaac:physics:Rot_X:DofOffset
+                int isaac:physics:Rot_Y:DofOffset
+                int isaac:physics:Rot_Z:DofOffset
+                int isaac:physics:Tr_X:DofOffset
+                int isaac:physics:Tr_Y:DofOffset
+                int isaac:physics:Tr_Z:DofOffset
+                rel physics:body0 = </World/Spider/robot_body/link_0_1>
+                rel physics:body1 = </World/Spider/robot_body/grip_0>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, -0.27)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+            }
+
+            def PhysicsRevoluteJoint "yaw_1" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/robot_body>
+                rel physics:body1 = </World/Spider/robot_body/yaw_carrier_1>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0.2, -0.1, -0.07)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, -0.7071068, 0)
+                quatf physics:localRot1 = (0.7071068, 0, -0.7071068, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsRevoluteJoint "shoulder_1" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/yaw_carrier_1>
+                rel physics:body1 = </World/Spider/robot_body/link_1_0>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, 0, -0.7071068)
+                quatf physics:localRot1 = (0.7071068, 0, 0, -0.7071068)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsRevoluteJoint "knee_1" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/link_1_0>
+                rel physics:body1 = </World/Spider/robot_body/link_1_1>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, -0.27)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, 0, -0.7071068)
+                quatf physics:localRot1 = (0.7071068, 0, 0, -0.7071068)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsFixedJoint "grip_1" (
+                prepend apiSchemas = ["IsaacJointAPI"]
+            )
+            {
+                string isaac:nameOverride
+                float[] isaac:physics:AccelerationLimit
+                int isaac:physics:index
+                float[] isaac:physics:JerkLimit
+                int isaac:physics:Rot_X:DofOffset
+                int isaac:physics:Rot_Y:DofOffset
+                int isaac:physics:Rot_Z:DofOffset
+                int isaac:physics:Tr_X:DofOffset
+                int isaac:physics:Tr_Y:DofOffset
+                int isaac:physics:Tr_Z:DofOffset
+                rel physics:body0 = </World/Spider/robot_body/link_1_1>
+                rel physics:body1 = </World/Spider/robot_body/grip_1>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, -0.27)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+            }
+
+            def PhysicsRevoluteJoint "yaw_2" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/robot_body>
+                rel physics:body1 = </World/Spider/robot_body/yaw_carrier_2>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (-0.2, 0.1, -0.07)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, -0.7071068, 0)
+                quatf physics:localRot1 = (0.7071068, 0, -0.7071068, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsRevoluteJoint "shoulder_2" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/yaw_carrier_2>
+                rel physics:body1 = </World/Spider/robot_body/link_2_0>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, 0, -0.7071068)
+                quatf physics:localRot1 = (0.7071068, 0, 0, -0.7071068)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsRevoluteJoint "knee_2" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/link_2_0>
+                rel physics:body1 = </World/Spider/robot_body/link_2_1>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, -0.27)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, 0, -0.7071068)
+                quatf physics:localRot1 = (0.7071068, 0, 0, -0.7071068)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsFixedJoint "grip_2" (
+                prepend apiSchemas = ["IsaacJointAPI"]
+            )
+            {
+                string isaac:nameOverride
+                float[] isaac:physics:AccelerationLimit
+                int isaac:physics:index
+                float[] isaac:physics:JerkLimit
+                int isaac:physics:Rot_X:DofOffset
+                int isaac:physics:Rot_Y:DofOffset
+                int isaac:physics:Rot_Z:DofOffset
+                int isaac:physics:Tr_X:DofOffset
+                int isaac:physics:Tr_Y:DofOffset
+                int isaac:physics:Tr_Z:DofOffset
+                rel physics:body0 = </World/Spider/robot_body/link_2_1>
+                rel physics:body1 = </World/Spider/robot_body/grip_2>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, -0.27)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+            }
+
+            def PhysicsRevoluteJoint "yaw_3" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/robot_body>
+                rel physics:body1 = </World/Spider/robot_body/yaw_carrier_3>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0.2, 0.1, -0.07)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, -0.7071068, 0)
+                quatf physics:localRot1 = (0.7071068, 0, -0.7071068, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsRevoluteJoint "shoulder_3" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/yaw_carrier_3>
+                rel physics:body1 = </World/Spider/robot_body/link_3_0>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, 0, -0.7071068)
+                quatf physics:localRot1 = (0.7071068, 0, 0, -0.7071068)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsRevoluteJoint "knee_3" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0
+                float drive:angular:physics:maxForce = 0
+                float drive:angular:physics:stiffness = 0
+                uniform token drive:angular:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider/robot_body/link_3_0>
+                rel physics:body1 = </World/Spider/robot_body/link_3_1>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, -0.27)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.7071068, 0, 0, -0.7071068)
+                quatf physics:localRot1 = (0.7071068, 0, 0, -0.7071068)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 0
+            }
+
+            def PhysicsFixedJoint "grip_3" (
+                prepend apiSchemas = ["IsaacJointAPI"]
+            )
+            {
+                string isaac:nameOverride
+                float[] isaac:physics:AccelerationLimit
+                int isaac:physics:index
+                float[] isaac:physics:JerkLimit
+                int isaac:physics:Rot_X:DofOffset
+                int isaac:physics:Rot_Y:DofOffset
+                int isaac:physics:Rot_Z:DofOffset
+                int isaac:physics:Tr_X:DofOffset
+                int isaac:physics:Tr_Y:DofOffset
+                int isaac:physics:Tr_Z:DofOffset
+                rel physics:body0 = </World/Spider/robot_body/link_3_1>
+                rel physics:body1 = </World/Spider/robot_body/grip_3>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, -0.27)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_0" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 191.84048
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_0/fem_mode_0>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 191.84048
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_1" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 191.84048
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_1/fem_mode_1>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 191.84048
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_2" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 7148.323
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_2/fem_mode_2>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 7148.323
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_3" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 7148.323
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_3/fem_mode_3>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 7148.323
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_4" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 45091.965
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_4/fem_mode_4>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 45091.965
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_5" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 51666.03
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_5/fem_mode_5>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 51666.03
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_6" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 51666.03
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_6/fem_mode_6>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 51666.03
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_7" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 58652.504
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_7/fem_mode_7>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 58652.504
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_8" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 177800.4
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_8/fem_mode_8>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 177800.4
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_9" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 177800.4
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_9/fem_mode_9>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 177800.4
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_10" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 405100.4
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_10/fem_mode_10>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 405100.4
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_11" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 427212.53
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_11/fem_mode_11>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 427212.53
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_12" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 427212.53
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_12/fem_mode_12>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 427212.53
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_13" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 522886.7
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_13/fem_mode_13>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 522886.7
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_14" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 826174.06
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_14/fem_mode_14>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 826174.06
+            }
+
+            def PhysicsPrismaticJoint "modal_eta_15" (
+                prepend apiSchemas = ["PhysxJointAPI", "PhysxLimitAPI:X", "PhysicsDriveAPI:linear"]
+            )
+            {
+                float drive:linear:physics:damping = 0
+                float drive:linear:physics:maxForce = 0
+                float drive:linear:physics:stiffness = 826174.06
+                uniform token drive:linear:physics:type = "force"
+                uniform token physics:axis = "X"
+                rel physics:body0 = </World/Spider>
+                rel physics:body1 = </World/Spider/fem_mode_15/fem_mode_15>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (0, 0, 0)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (1, 0, 0, 0)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+                float physxJoint:armature = 0
+                float physxLimit:X:damping = 0
+                float physxLimit:X:stiffness = 826174.06
+            }
+        }
+
+        def Xform "robot_body" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints = [
+                </World/Spider/joints/grip_0>,
+                </World/Spider/joints/grip_1>,
+                </World/Spider/joints/grip_2>,
+                </World/Spider/joints/grip_3>,
+            ]
+            rel isaac:physics:robotLinks = [
+                </World/Spider/robot_body/robot_body>,
+                </World/Spider/robot_body/yaw_carrier_0>,
+                </World/Spider/robot_body/link_0_0>,
+                </World/Spider/robot_body/link_0_1>,
+                </World/Spider/robot_body/grip_0>,
+                </World/Spider/robot_body/yaw_carrier_1>,
+                </World/Spider/robot_body/link_1_0>,
+                </World/Spider/robot_body/link_1_1>,
+                </World/Spider/robot_body/grip_1>,
+                </World/Spider/robot_body/yaw_carrier_2>,
+                </World/Spider/robot_body/link_2_0>,
+                </World/Spider/robot_body/link_2_1>,
+                </World/Spider/robot_body/grip_2>,
+                </World/Spider/robot_body/yaw_carrier_3>,
+                </World/Spider/robot_body/link_3_0>,
+                </World/Spider/robot_body/link_3_1>,
+                </World/Spider/robot_body/grip_3>,
+            ]
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "robot_body" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.43794334, 1.0772767, 1.3585833)
+                float physics:mass = 47.95
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/robot_body>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/robot_body>
+                )
+                {
+                }
+            }
+
+            def Xform "yaw_carrier_0" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 0.0001
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.20000000298023224, -0.10000000149011612, -0.07000000029802322)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/yaw_carrier_0>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/yaw_carrier_0>
+                )
+                {
+                }
+            }
+
+            def Xform "link_0_0" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, -0.135)
+                float3 physics:diagonalInertia = (0.010933056, 0.010933056, 0.000287712)
+                float physics:mass = 1.776
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.20000000298023224, -0.10000000149011612, -0.07000000029802322)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/link_0_0>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/link_0_0>
+                )
+                {
+                }
+            }
+
+            def Xform "link_0_1" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, -0.135)
+                float3 physics:diagonalInertia = (0.010933056, 0.010933056, 0.000287712)
+                float physics:mass = 1.776
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.20000000298023224, -0.10000000149011612, -0.3400000035762787)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/link_0_1>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/link_0_1>
+                )
+                {
+                }
+            }
+
+            def Xform "grip_0" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (1e-12, 1e-12, 1e-12)
+                float physics:mass = 0.4
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.20000000298023224, -0.10000000149011612, -0.6100000143051147)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/grip_0>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/grip_0>
+                )
+                {
+                }
+
+                def Xform "sites"
+                {
+                    def Xform "foot_0" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                        instanceable = true
+                        prepend references = </meshes/foot_0>
+                    )
+                    {
+                        rel material:binding = </Tmp/Looks/material_rgba>
+                    }
+                }
+            }
+
+            def Xform "yaw_carrier_1" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 0.0001
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.20000000298023224, -0.10000000149011612, -0.07000000029802322)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/yaw_carrier_1>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/yaw_carrier_1>
+                )
+                {
+                }
+            }
+
+            def Xform "link_1_0" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, -0.135)
+                float3 physics:diagonalInertia = (0.010933056, 0.010933056, 0.000287712)
+                float physics:mass = 1.776
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.20000000298023224, -0.10000000149011612, -0.07000000029802322)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/link_1_0>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/link_1_0>
+                )
+                {
+                }
+            }
+
+            def Xform "link_1_1" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, -0.135)
+                float3 physics:diagonalInertia = (0.010933056, 0.010933056, 0.000287712)
+                float physics:mass = 1.776
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.20000000298023224, -0.10000000149011612, -0.3400000035762787)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/link_1_1>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/link_1_1>
+                )
+                {
+                }
+            }
+
+            def Xform "grip_1" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (1e-12, 1e-12, 1e-12)
+                float physics:mass = 0.4
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.20000000298023224, -0.10000000149011612, -0.6100000143051147)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/grip_1>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/grip_1>
+                )
+                {
+                }
+
+                def Xform "sites"
+                {
+                    def Xform "foot_1" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                        instanceable = true
+                        prepend references = </meshes/foot_1>
+                    )
+                    {
+                        rel material:binding = </Tmp/Looks/material_rgba>
+                    }
+                }
+            }
+
+            def Xform "yaw_carrier_2" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 0.0001
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.20000000298023224, 0.10000000149011612, -0.07000000029802322)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/yaw_carrier_2>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/yaw_carrier_2>
+                )
+                {
+                }
+            }
+
+            def Xform "link_2_0" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, -0.135)
+                float3 physics:diagonalInertia = (0.010933056, 0.010933056, 0.000287712)
+                float physics:mass = 1.776
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.20000000298023224, 0.10000000149011612, -0.07000000029802322)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/link_2_0>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/link_2_0>
+                )
+                {
+                }
+            }
+
+            def Xform "link_2_1" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, -0.135)
+                float3 physics:diagonalInertia = (0.010933056, 0.010933056, 0.000287712)
+                float physics:mass = 1.776
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.20000000298023224, 0.10000000149011612, -0.3400000035762787)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/link_2_1>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/link_2_1>
+                )
+                {
+                }
+            }
+
+            def Xform "grip_2" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (1e-12, 1e-12, 1e-12)
+                float physics:mass = 0.4
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.20000000298023224, 0.10000000149011612, -0.6100000143051147)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/grip_2>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/grip_2>
+                )
+                {
+                }
+
+                def Xform "sites"
+                {
+                    def Xform "foot_2" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                        instanceable = true
+                        prepend references = </meshes/foot_2>
+                    )
+                    {
+                        rel material:binding = </Tmp/Looks/material_rgba>
+                    }
+                }
+            }
+
+            def Xform "yaw_carrier_3" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 0.0001
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.20000000298023224, 0.10000000149011612, -0.07000000029802322)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/yaw_carrier_3>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/yaw_carrier_3>
+                )
+                {
+                }
+            }
+
+            def Xform "link_3_0" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, -0.135)
+                float3 physics:diagonalInertia = (0.010933056, 0.010933056, 0.000287712)
+                float physics:mass = 1.776
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.20000000298023224, 0.10000000149011612, -0.07000000029802322)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/link_3_0>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/link_3_0>
+                )
+                {
+                }
+            }
+
+            def Xform "link_3_1" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, -0.135)
+                float3 physics:diagonalInertia = (0.010933056, 0.010933056, 0.000287712)
+                float physics:mass = 1.776
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.20000000298023224, 0.10000000149011612, -0.3400000035762787)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/link_3_1>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/link_3_1>
+                )
+                {
+                }
+            }
+
+            def Xform "grip_3" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (1e-12, 1e-12, 1e-12)
+                float physics:mass = 0.4
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.20000000298023224, 0.10000000149011612, -0.6100000143051147)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/grip_3>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/grip_3>
+                )
+                {
+                }
+
+                def Xform "sites"
+                {
+                    def Xform "foot_3" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                        instanceable = true
+                        prepend references = </meshes/foot_3>
+                    )
+                    {
+                        rel material:binding = </Tmp/Looks/material_rgba>
+                    }
+                }
+            }
+        }
+
+        def Xform "fem_mode_0" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_0/fem_mode_0>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_0" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_0>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_0>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_1" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_1/fem_mode_1>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_1" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_1>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_1>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_2" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_2/fem_mode_2>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_2" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_2>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_2>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_3" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_3/fem_mode_3>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_3" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_3>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_3>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_4" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_4/fem_mode_4>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_4" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_4>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_4>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_5" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_5/fem_mode_5>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_5" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_5>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_5>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_6" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_6/fem_mode_6>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_6" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_6>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_6>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_7" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_7/fem_mode_7>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_7" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_7>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_7>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_8" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_8/fem_mode_8>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_8" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_8>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_8>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_9" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_9/fem_mode_9>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_9" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_9>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_9>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_10" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_10/fem_mode_10>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_10" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_10>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_10>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_11" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_11/fem_mode_11>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_11" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_11>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_11>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_12" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_12/fem_mode_12>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_12" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_12>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_12>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_13" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_13/fem_mode_13>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_13" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_13>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_13>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_14" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_14/fem_mode_14>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_14" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_14>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_14>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "fem_mode_15" (
+            prepend apiSchemas = ["IsaacRobotAPI"]
+        )
+        {
+            string[] isaac:changelog
+            string isaac:description
+            token isaac:license
+            string isaac:namespace
+            rel isaac:physics:robotJoints
+            rel isaac:physics:robotLinks = </World/Spider/fem_mode_15/fem_mode_15>
+            token isaac:robotType
+            string isaac:source
+            string isaac:version
+
+            def Xform "fem_mode_15" (
+                prepend apiSchemas = ["IsaacLinkAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            )
+            {
+                string isaac:nameOverride
+                point3f physics:centerOfMass = (0, 0, 0)
+                float3 physics:diagonalInertia = (0.000001, 0.000001, 0.000001)
+                float physics:mass = 1
+                bool physxArticulation:enabledSelfCollisions = 0
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "collisions" (
+                    instanceable = true
+                    prepend references = </collisions/fem_mode_15>
+                )
+                {
+                    token visibility = "invisible"
+                }
+
+                def Xform "visuals" (
+                    instanceable = true
+                    prepend references = </visuals/fem_mode_15>
+                )
+                {
+                }
+            }
+        }
+
+        def Xform "worldBody" (
+            prepend apiSchemas = ["PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+        )
+        {
+            bool physxArticulation:enabledSelfCollisions = 0
+
+            def Xform "root_support" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+            )
+            {
+                bool physics:kinematicEnabled = 1
+
+                def Xform "visuals"
+                {
+                    def Xform "root_support"
+                    {
+                        token visibility = "invisible"
+
+                        def Xform "root_support" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                            instanceable = true
+                            prepend references = </meshes/root_support>
+                        )
+                        {
+                            rel material:binding = </Tmp/Looks/material_rgba>
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (0.02500000037252903, 0.1899999976158142, 0.1899999976158142)
+                            double3 xformOp:translate = (-0.02500000037252903, 0, 0)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+def PhysicsScene "physicsScene" (
+    prepend apiSchemas = ["PhysxSceneAPI"]
+)
+{
+    vector3f physics:gravityDirection = (0, 0, -1)
+    float physics:gravityMagnitude = 9.81
+    uniform token physxScene:broadphaseType = "MBP"
+    bool physxScene:enableCCD = 1
+    bool physxScene:enableGPUDynamics = 0
+    bool physxScene:enableStabilization = 1
+    uniform token physxScene:solverType = "TGS"
+}
+
+def Scope "meshes"
+{
+    token visibility = "invisible"
+
+    def Xform "chassis"
+    {
+        def Cube "chassis"
+        {
+            float3[] extent = [(-0.25, -0.15, -0.07), (0.25, 0.15, 0.07)]
+        }
+    }
+
+    def Xform "_geom_0"
+    {
+        def Cube "_geom_0"
+        {
+            float3[] extent = [(-0.19, -0.115, -0.007), (0.19, 0.115, 0.007)]
+        }
+    }
+
+    def Xform "_geom_1"
+    {
+        def Capsule "_geom_1"
+        {
+            uniform token axis = "X"
+            float3[] extent = [(-0.153, -0.018, -0.018), (0.153, 0.018, 0.018)]
+            double height = 0.27000001072883606
+            double radius = 0.017999999225139618
+        }
+    }
+
+    def Xform "_geom_2"
+    {
+        def Sphere "_geom_2"
+        {
+            float3[] extent = [(-0.026, -0.026, -0.026), (0.026, 0.026, 0.026)]
+            double radius = 0.026000000536441803
+        }
+    }
+
+    def Xform "_geom_3"
+    {
+        def Capsule "_geom_3"
+        {
+            uniform token axis = "X"
+            float3[] extent = [(-0.153, -0.018, -0.018), (0.153, 0.018, 0.018)]
+            double height = 0.27000001072883606
+            double radius = 0.017999999225139618
+        }
+    }
+
+    def Xform "_geom_4"
+    {
+        def Sphere "_geom_4"
+        {
+            float3[] extent = [(-0.026, -0.026, -0.026), (0.026, 0.026, 0.026)]
+            double radius = 0.026000000536441803
+        }
+    }
+
+    def Xform "_geom_5"
+    {
+        def Cube "_geom_5"
+        {
+            float3[] extent = [(-0.024, -0.012, -0.009), (0.024, 0.012, 0.009)]
+        }
+    }
+
+    def Xform "jaw_0__1"
+    {
+        def Cube "jaw_0__1"
+        {
+            float3[] extent = [(-0.004, -0.012, -0.016), (0.004, 0.012, 0.016)]
+        }
+    }
+
+    def Xform "jaw_0_1"
+    {
+        def Cube "jaw_0_1"
+        {
+            float3[] extent = [(-0.004, -0.012, -0.016), (0.004, 0.012, 0.016)]
+        }
+    }
+
+    def Xform "foot_0"
+    {
+        def Sphere "foot_0"
+        {
+            float3[] extent = [(-0.006, -0.006, -0.006), (0.006, 0.006, 0.006)]
+            double radius = 0.006000000052154064
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "_geom_6"
+    {
+        def Capsule "_geom_6"
+        {
+            uniform token axis = "X"
+            float3[] extent = [(-0.153, -0.018, -0.018), (0.153, 0.018, 0.018)]
+            double height = 0.27000001072883606
+            double radius = 0.017999999225139618
+        }
+    }
+
+    def Xform "_geom_7"
+    {
+        def Sphere "_geom_7"
+        {
+            float3[] extent = [(-0.026, -0.026, -0.026), (0.026, 0.026, 0.026)]
+            double radius = 0.026000000536441803
+        }
+    }
+
+    def Xform "_geom_8"
+    {
+        def Capsule "_geom_8"
+        {
+            uniform token axis = "X"
+            float3[] extent = [(-0.153, -0.018, -0.018), (0.153, 0.018, 0.018)]
+            double height = 0.27000001072883606
+            double radius = 0.017999999225139618
+        }
+    }
+
+    def Xform "_geom_9"
+    {
+        def Sphere "_geom_9"
+        {
+            float3[] extent = [(-0.026, -0.026, -0.026), (0.026, 0.026, 0.026)]
+            double radius = 0.026000000536441803
+        }
+    }
+
+    def Xform "_geom_10"
+    {
+        def Cube "_geom_10"
+        {
+            float3[] extent = [(-0.024, -0.012, -0.009), (0.024, 0.012, 0.009)]
+        }
+    }
+
+    def Xform "jaw_1__1"
+    {
+        def Cube "jaw_1__1"
+        {
+            float3[] extent = [(-0.004, -0.012, -0.016), (0.004, 0.012, 0.016)]
+        }
+    }
+
+    def Xform "jaw_1_1"
+    {
+        def Cube "jaw_1_1"
+        {
+            float3[] extent = [(-0.004, -0.012, -0.016), (0.004, 0.012, 0.016)]
+        }
+    }
+
+    def Xform "foot_1"
+    {
+        def Sphere "foot_1"
+        {
+            float3[] extent = [(-0.006, -0.006, -0.006), (0.006, 0.006, 0.006)]
+            double radius = 0.006000000052154064
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "_geom_11"
+    {
+        def Capsule "_geom_11"
+        {
+            uniform token axis = "X"
+            float3[] extent = [(-0.153, -0.018, -0.018), (0.153, 0.018, 0.018)]
+            double height = 0.27000001072883606
+            double radius = 0.017999999225139618
+        }
+    }
+
+    def Xform "_geom_12"
+    {
+        def Sphere "_geom_12"
+        {
+            float3[] extent = [(-0.026, -0.026, -0.026), (0.026, 0.026, 0.026)]
+            double radius = 0.026000000536441803
+        }
+    }
+
+    def Xform "_geom_13"
+    {
+        def Capsule "_geom_13"
+        {
+            uniform token axis = "X"
+            float3[] extent = [(-0.153, -0.018, -0.018), (0.153, 0.018, 0.018)]
+            double height = 0.27000001072883606
+            double radius = 0.017999999225139618
+        }
+    }
+
+    def Xform "_geom_14"
+    {
+        def Sphere "_geom_14"
+        {
+            float3[] extent = [(-0.026, -0.026, -0.026), (0.026, 0.026, 0.026)]
+            double radius = 0.026000000536441803
+        }
+    }
+
+    def Xform "_geom_15"
+    {
+        def Cube "_geom_15"
+        {
+            float3[] extent = [(-0.024, -0.012, -0.009), (0.024, 0.012, 0.009)]
+        }
+    }
+
+    def Xform "jaw_2__1"
+    {
+        def Cube "jaw_2__1"
+        {
+            float3[] extent = [(-0.004, -0.012, -0.016), (0.004, 0.012, 0.016)]
+        }
+    }
+
+    def Xform "jaw_2_1"
+    {
+        def Cube "jaw_2_1"
+        {
+            float3[] extent = [(-0.004, -0.012, -0.016), (0.004, 0.012, 0.016)]
+        }
+    }
+
+    def Xform "foot_2"
+    {
+        def Sphere "foot_2"
+        {
+            float3[] extent = [(-0.006, -0.006, -0.006), (0.006, 0.006, 0.006)]
+            double radius = 0.006000000052154064
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "_geom_16"
+    {
+        def Capsule "_geom_16"
+        {
+            uniform token axis = "X"
+            float3[] extent = [(-0.153, -0.018, -0.018), (0.153, 0.018, 0.018)]
+            double height = 0.27000001072883606
+            double radius = 0.017999999225139618
+        }
+    }
+
+    def Xform "_geom_17"
+    {
+        def Sphere "_geom_17"
+        {
+            float3[] extent = [(-0.026, -0.026, -0.026), (0.026, 0.026, 0.026)]
+            double radius = 0.026000000536441803
+        }
+    }
+
+    def Xform "_geom_18"
+    {
+        def Capsule "_geom_18"
+        {
+            uniform token axis = "X"
+            float3[] extent = [(-0.153, -0.018, -0.018), (0.153, 0.018, 0.018)]
+            double height = 0.27000001072883606
+            double radius = 0.017999999225139618
+        }
+    }
+
+    def Xform "_geom_19"
+    {
+        def Sphere "_geom_19"
+        {
+            float3[] extent = [(-0.026, -0.026, -0.026), (0.026, 0.026, 0.026)]
+            double radius = 0.026000000536441803
+        }
+    }
+
+    def Xform "_geom_20"
+    {
+        def Cube "_geom_20"
+        {
+            float3[] extent = [(-0.024, -0.012, -0.009), (0.024, 0.012, 0.009)]
+        }
+    }
+
+    def Xform "jaw_3__1"
+    {
+        def Cube "jaw_3__1"
+        {
+            float3[] extent = [(-0.004, -0.012, -0.016), (0.004, 0.012, 0.016)]
+        }
+    }
+
+    def Xform "jaw_3_1"
+    {
+        def Cube "jaw_3_1"
+        {
+            float3[] extent = [(-0.004, -0.012, -0.016), (0.004, 0.012, 0.016)]
+        }
+    }
+
+    def Xform "foot_3"
+    {
+        def Sphere "foot_3"
+        {
+            float3[] extent = [(-0.006, -0.006, -0.006), (0.006, 0.006, 0.006)]
+            double radius = 0.006000000052154064
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "root_support"
+    {
+        def Cube "root_support"
+        {
+            float3[] extent = [(-0.025, -0.19, -0.19), (0.025, 0.19, 0.19)]
+        }
+    }
+}
+
+def Scope "visuals"
+{
+    token visibility = "invisible"
+
+    def Xform "robot_body"
+    {
+        def Xform "chassis" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/chassis>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.25, 0.15000000596046448, 0.07000000029802322)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "_geom_0" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_0>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.1899999976158142, 0.11500000208616257, 0.007000000216066837)
+            double3 xformOp:translate = (0, 0, 0.07199999690055847)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "yaw_carrier_0"
+    {
+    }
+
+    def Xform "link_0_0"
+    {
+        def Xform "_geom_1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_1>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (0.7071067932881644, 0, 0.7071067448816972, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, -0.13500000536441803)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "_geom_2" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_2>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "link_0_1"
+    {
+        def Xform "_geom_3" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_3>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (0.7071067932881644, 0, 0.7071067448816972, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, -0.13500000536441803)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "_geom_4" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_4>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "grip_0"
+    {
+        def Xform "_geom_5" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_5>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.024000000208616257, 0.012000000104308128, 0.008999999612569809)
+            double3 xformOp:translate = (0, 0, 0.013000000268220901)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "jaw_0__1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/jaw_0__1>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.004000000189989805, 0.012000000104308128, 0.01600000075995922)
+            double3 xformOp:translate = (-0.024000000208616257, 0, -0.0010000000474974513)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "jaw_0_1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/jaw_0_1>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.004000000189989805, 0.012000000104308128, 0.01600000075995922)
+            double3 xformOp:translate = (0.024000000208616257, 0, -0.0010000000474974513)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "yaw_carrier_1"
+    {
+    }
+
+    def Xform "link_1_0"
+    {
+        def Xform "_geom_6" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_6>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (0.7071067932881644, 0, 0.7071067448816972, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, -0.13500000536441803)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "_geom_7" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_7>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "link_1_1"
+    {
+        def Xform "_geom_8" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_8>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (0.7071067932881644, 0, 0.7071067448816972, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, -0.13500000536441803)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "_geom_9" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_9>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "grip_1"
+    {
+        def Xform "_geom_10" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_10>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.024000000208616257, 0.012000000104308128, 0.008999999612569809)
+            double3 xformOp:translate = (0, 0, 0.013000000268220901)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "jaw_1__1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/jaw_1__1>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.004000000189989805, 0.012000000104308128, 0.01600000075995922)
+            double3 xformOp:translate = (-0.024000000208616257, 0, -0.0010000000474974513)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "jaw_1_1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/jaw_1_1>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.004000000189989805, 0.012000000104308128, 0.01600000075995922)
+            double3 xformOp:translate = (0.024000000208616257, 0, -0.0010000000474974513)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "yaw_carrier_2"
+    {
+    }
+
+    def Xform "link_2_0"
+    {
+        def Xform "_geom_11" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_11>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (0.7071067932881644, 0, 0.7071067448816972, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, -0.13500000536441803)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "_geom_12" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_12>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "link_2_1"
+    {
+        def Xform "_geom_13" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_13>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (0.7071067932881644, 0, 0.7071067448816972, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, -0.13500000536441803)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "_geom_14" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_14>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "grip_2"
+    {
+        def Xform "_geom_15" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_15>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.024000000208616257, 0.012000000104308128, 0.008999999612569809)
+            double3 xformOp:translate = (0, 0, 0.013000000268220901)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "jaw_2__1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/jaw_2__1>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.004000000189989805, 0.012000000104308128, 0.01600000075995922)
+            double3 xformOp:translate = (-0.024000000208616257, 0, -0.0010000000474974513)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "jaw_2_1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/jaw_2_1>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.004000000189989805, 0.012000000104308128, 0.01600000075995922)
+            double3 xformOp:translate = (0.024000000208616257, 0, -0.0010000000474974513)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "yaw_carrier_3"
+    {
+    }
+
+    def Xform "link_3_0"
+    {
+        def Xform "_geom_16" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_16>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (0.7071067932881644, 0, 0.7071067448816972, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, -0.13500000536441803)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "_geom_17" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_17>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "link_3_1"
+    {
+        def Xform "_geom_18" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_18>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (0.7071067932881644, 0, 0.7071067448816972, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, -0.13500000536441803)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "_geom_19" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_19>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "grip_3"
+    {
+        def Xform "_geom_20" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/_geom_20>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.024000000208616257, 0.012000000104308128, 0.008999999612569809)
+            double3 xformOp:translate = (0, 0, 0.013000000268220901)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "jaw_3__1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/jaw_3__1>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.004000000189989805, 0.012000000104308128, 0.01600000075995922)
+            double3 xformOp:translate = (-0.024000000208616257, 0, -0.0010000000474974513)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "jaw_3_1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = </meshes/jaw_3_1>
+        )
+        {
+            rel material:binding = </Tmp/Looks/material_rgba>
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (0.004000000189989805, 0.012000000104308128, 0.01600000075995922)
+            double3 xformOp:translate = (0.024000000208616257, 0, -0.0010000000474974513)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "fem_mode_0"
+    {
+    }
+
+    def Xform "fem_mode_1"
+    {
+    }
+
+    def Xform "fem_mode_2"
+    {
+    }
+
+    def Xform "fem_mode_3"
+    {
+    }
+
+    def Xform "fem_mode_4"
+    {
+    }
+
+    def Xform "fem_mode_5"
+    {
+    }
+
+    def Xform "fem_mode_6"
+    {
+    }
+
+    def Xform "fem_mode_7"
+    {
+    }
+
+    def Xform "fem_mode_8"
+    {
+    }
+
+    def Xform "fem_mode_9"
+    {
+    }
+
+    def Xform "fem_mode_10"
+    {
+    }
+
+    def Xform "fem_mode_11"
+    {
+    }
+
+    def Xform "fem_mode_12"
+    {
+    }
+
+    def Xform "fem_mode_13"
+    {
+    }
+
+    def Xform "fem_mode_14"
+    {
+    }
+
+    def Xform "fem_mode_15"
+    {
+    }
+}
+
+def Scope "collisions"
+{
+    token visibility = "invisible"
+
+    def PhysicsCollisionGroup "robotCollisionGroup"
+    {
+        prepend rel collection:colliders:includes = </World/Spider>
+    }
+
+    def PhysicsCollisionGroup "collidersCollisionGroup"
+    {
+        prepend rel collection:colliders:includes = </collisions>
+        prepend rel physics:filteredGroups = </collisions/robotCollisionGroup>
+    }
+
+    def Xform "robot_body"
+    {
+    }
+
+    def Xform "yaw_carrier_0"
+    {
+    }
+
+    def Xform "link_0_0"
+    {
+    }
+
+    def Xform "link_0_1"
+    {
+    }
+
+    def Xform "grip_0"
+    {
+    }
+
+    def Xform "yaw_carrier_1"
+    {
+    }
+
+    def Xform "link_1_0"
+    {
+    }
+
+    def Xform "link_1_1"
+    {
+    }
+
+    def Xform "grip_1"
+    {
+    }
+
+    def Xform "yaw_carrier_2"
+    {
+    }
+
+    def Xform "link_2_0"
+    {
+    }
+
+    def Xform "link_2_1"
+    {
+    }
+
+    def Xform "grip_2"
+    {
+    }
+
+    def Xform "yaw_carrier_3"
+    {
+    }
+
+    def Xform "link_3_0"
+    {
+    }
+
+    def Xform "link_3_1"
+    {
+    }
+
+    def Xform "grip_3"
+    {
+    }
+
+    def Xform "fem_mode_0"
+    {
+    }
+
+    def Xform "fem_mode_1"
+    {
+    }
+
+    def Xform "fem_mode_2"
+    {
+    }
+
+    def Xform "fem_mode_3"
+    {
+    }
+
+    def Xform "fem_mode_4"
+    {
+    }
+
+    def Xform "fem_mode_5"
+    {
+    }
+
+    def Xform "fem_mode_6"
+    {
+    }
+
+    def Xform "fem_mode_7"
+    {
+    }
+
+    def Xform "fem_mode_8"
+    {
+    }
+
+    def Xform "fem_mode_9"
+    {
+    }
+
+    def Xform "fem_mode_10"
+    {
+    }
+
+    def Xform "fem_mode_11"
+    {
+    }
+
+    def Xform "fem_mode_12"
+    {
+    }
+
+    def Xform "fem_mode_13"
+    {
+    }
+
+    def Xform "fem_mode_14"
+    {
+    }
+
+    def Xform "fem_mode_15"
+    {
+    }
+}
+

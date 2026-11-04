@@ -1,0 +1,28 @@
+{
+  "trajectory": "physx_fullrate_audit",
+  "duration_s": 3.0,
+  "finite": true,
+  "source_geometry_fk_max_position_error_m": 3.8845777467175065e-07,
+  "max_foot_velocity_difference_m_per_s": 6.021452707520816e-07,
+  "minimum_attached_grippers": 3,
+  "released_each_leg": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "recaptured_each_leg": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "peak_motor_torque_Nm": 12.708208454849634,
+  "body_advance_m": 0.002161681652069092,
+  "energy_audit_at_solver_rate": true,
+  "naive_continuous_torque_relative_residual": 0.22156212622999885,
+  "sampled_energy_balance_max_residual_J": 0.008538907129738982,
+  "sampled_energy_balance_relative_residual": 0.017035546545391342,
+  "native_mass_matrix_kinetic_energy_max_difference_J": 7.604544941530733e-07,
+  "energy_audit_note": "Held-input midpoint motor work when logging at solver rate; other powers trapezoidal. Coarse mission logs are not sufficient for a full step-rate energy validation. Numerical diagnostic, not experimental validation."
+}

@@ -1,0 +1,191 @@
+<mujoco model="MuJoCo-only spatial spider and 16 FEM modes">
+  <compiler angle="radian" inertiafromgeom="false" />
+  <option gravity="0 0 0" timestep=".001" integrator="RK4" />
+  <asset>
+    <texture name="sky" type="skybox" builtin="flat" rgb1="1 1 1" rgb2="1 1 1" width="128" height="128" />
+  </asset>
+  <visual>
+    <global offwidth="1280" offheight="800" />
+  </visual>
+  <worldbody>
+    <light pos="2 -3 5" dir="0 0 -1" directional="true" />
+    <body name="robot_body">
+      <inertial pos="0 0 0" mass="47.95" diaginertia="0.43794333333333335 1.0772766666666667 1.3585833333333333" />
+      <geom name="chassis" type="box" size="0.25 0.14999999999999999 0.070000000000000007" rgba=".19 .25 .29 1" contype="0" conaffinity="0" />
+      <geom type="box" pos="0 0 .072" size=".19 .115 .007" rgba=".45 .54 .60 1" contype="0" conaffinity="0" />
+      <freejoint name="base_free" /><body name="yaw_carrier_0" pos="-0.20000000000000001 -0.10000000000000001 -0.070000000000000007"><joint name="yaw_0" axis="0 0 1" type="hinge" />
+        <inertial pos="0 0 0" mass=".0001" diaginertia="1e-6 1e-6 1e-6" /><body name="link_0_0">
+        <joint name="shoulder_0" axis="0 -1 0" type="hinge" />
+        <inertial pos="0 0 -0.13500000000000001" mass="1.776" diaginertia="0.010933056000000002 0.010933056000000002 0.00028771199999999997" />
+        <geom type="capsule" fromto="0 0 0 0 0 -0.27000000000000002" size="0.018" rgba=".52 .59 .64 1" contype="0" conaffinity="0" />
+        <geom type="sphere" size=".026" rgba=".15 .20 .25 1" contype="0" conaffinity="0" />
+        <body name="link_0_1" pos="0 0 -0.27000000000000002">
+          <joint name="knee_0" axis="0 -1 0" type="hinge" />
+          <inertial pos="0 0 -0.13500000000000001" mass="1.776" diaginertia="0.010933056000000002 0.010933056000000002 0.00028771199999999997" />
+          <geom type="capsule" fromto="0 0 0 0 0 -0.27000000000000002" size="0.018" rgba=".52 .59 .64 1" contype="0" conaffinity="0" />
+          <geom type="sphere" size=".026" rgba=".15 .20 .25 1" contype="0" conaffinity="0" />
+          <body name="grip_0" pos="0 0 -0.27000000000000002">
+            <inertial pos="0 0 0" mass="0.4" diaginertia="1e-12 1e-12 1e-12" />
+            <site name="foot_0" size=".006" />
+            <geom type="box" pos="0 0 .013" size=".024 .012 .009" rgba=".2 .25 .29 1" contype="0" conaffinity="0" />
+            <geom name="jaw_0_-1" type="box" pos="-0.024 0 -0.001" size=".004 .012 .016" rgba=".1 .55 .3 1" contype="0" conaffinity="0" />
+            <geom name="jaw_0_1" type="box" pos="0.024 0 -0.001" size=".004 .012 .016" rgba=".1 .55 .3 1" contype="0" conaffinity="0" />
+          </body>
+        </body>
+      </body>
+      </body><body name="yaw_carrier_1" pos="0.20000000000000001 -0.10000000000000001 -0.070000000000000007"><joint name="yaw_1" axis="0 0 1" type="hinge" />
+        <inertial pos="0 0 0" mass=".0001" diaginertia="1e-6 1e-6 1e-6" /><body name="link_1_0">
+        <joint name="shoulder_1" axis="0 -1 0" type="hinge" />
+        <inertial pos="0 0 -0.13500000000000001" mass="1.776" diaginertia="0.010933056000000002 0.010933056000000002 0.00028771199999999997" />
+        <geom type="capsule" fromto="0 0 0 0 0 -0.27000000000000002" size="0.018" rgba=".52 .59 .64 1" contype="0" conaffinity="0" />
+        <geom type="sphere" size=".026" rgba=".15 .20 .25 1" contype="0" conaffinity="0" />
+        <body name="link_1_1" pos="0 0 -0.27000000000000002">
+          <joint name="knee_1" axis="0 -1 0" type="hinge" />
+          <inertial pos="0 0 -0.13500000000000001" mass="1.776" diaginertia="0.010933056000000002 0.010933056000000002 0.00028771199999999997" />
+          <geom type="capsule" fromto="0 0 0 0 0 -0.27000000000000002" size="0.018" rgba=".52 .59 .64 1" contype="0" conaffinity="0" />
+          <geom type="sphere" size=".026" rgba=".15 .20 .25 1" contype="0" conaffinity="0" />
+          <body name="grip_1" pos="0 0 -0.27000000000000002">
+            <inertial pos="0 0 0" mass="0.4" diaginertia="1e-12 1e-12 1e-12" />
+            <site name="foot_1" size=".006" />
+            <geom type="box" pos="0 0 .013" size=".024 .012 .009" rgba=".2 .25 .29 1" contype="0" conaffinity="0" />
+            <geom name="jaw_1_-1" type="box" pos="-0.024 0 -0.001" size=".004 .012 .016" rgba=".1 .55 .3 1" contype="0" conaffinity="0" />
+            <geom name="jaw_1_1" type="box" pos="0.024 0 -0.001" size=".004 .012 .016" rgba=".1 .55 .3 1" contype="0" conaffinity="0" />
+          </body>
+        </body>
+      </body>
+      </body><body name="yaw_carrier_2" pos="-0.20000000000000001 0.10000000000000001 -0.070000000000000007"><joint name="yaw_2" axis="0 0 1" type="hinge" />
+        <inertial pos="0 0 0" mass=".0001" diaginertia="1e-6 1e-6 1e-6" /><body name="link_2_0">
+        <joint name="shoulder_2" axis="0 -1 0" type="hinge" />
+        <inertial pos="0 0 -0.13500000000000001" mass="1.776" diaginertia="0.010933056000000002 0.010933056000000002 0.00028771199999999997" />
+        <geom type="capsule" fromto="0 0 0 0 0 -0.27000000000000002" size="0.018" rgba=".52 .59 .64 1" contype="0" conaffinity="0" />
+        <geom type="sphere" size=".026" rgba=".15 .20 .25 1" contype="0" conaffinity="0" />
+        <body name="link_2_1" pos="0 0 -0.27000000000000002">
+          <joint name="knee_2" axis="0 -1 0" type="hinge" />
+          <inertial pos="0 0 -0.13500000000000001" mass="1.776" diaginertia="0.010933056000000002 0.010933056000000002 0.00028771199999999997" />
+          <geom type="capsule" fromto="0 0 0 0 0 -0.27000000000000002" size="0.018" rgba=".52 .59 .64 1" contype="0" conaffinity="0" />
+          <geom type="sphere" size=".026" rgba=".15 .20 .25 1" contype="0" conaffinity="0" />
+          <body name="grip_2" pos="0 0 -0.27000000000000002">
+            <inertial pos="0 0 0" mass="0.4" diaginertia="1e-12 1e-12 1e-12" />
+            <site name="foot_2" size=".006" />
+            <geom type="box" pos="0 0 .013" size=".024 .012 .009" rgba=".2 .25 .29 1" contype="0" conaffinity="0" />
+            <geom name="jaw_2_-1" type="box" pos="-0.024 0 -0.001" size=".004 .012 .016" rgba=".1 .55 .3 1" contype="0" conaffinity="0" />
+            <geom name="jaw_2_1" type="box" pos="0.024 0 -0.001" size=".004 .012 .016" rgba=".1 .55 .3 1" contype="0" conaffinity="0" />
+          </body>
+        </body>
+      </body>
+      </body><body name="yaw_carrier_3" pos="0.20000000000000001 0.10000000000000001 -0.070000000000000007"><joint name="yaw_3" axis="0 0 1" type="hinge" />
+        <inertial pos="0 0 0" mass=".0001" diaginertia="1e-6 1e-6 1e-6" /><body name="link_3_0">
+        <joint name="shoulder_3" axis="0 -1 0" type="hinge" />
+        <inertial pos="0 0 -0.13500000000000001" mass="1.776" diaginertia="0.010933056000000002 0.010933056000000002 0.00028771199999999997" />
+        <geom type="capsule" fromto="0 0 0 0 0 -0.27000000000000002" size="0.018" rgba=".52 .59 .64 1" contype="0" conaffinity="0" />
+        <geom type="sphere" size=".026" rgba=".15 .20 .25 1" contype="0" conaffinity="0" />
+        <body name="link_3_1" pos="0 0 -0.27000000000000002">
+          <joint name="knee_3" axis="0 -1 0" type="hinge" />
+          <inertial pos="0 0 -0.13500000000000001" mass="1.776" diaginertia="0.010933056000000002 0.010933056000000002 0.00028771199999999997" />
+          <geom type="capsule" fromto="0 0 0 0 0 -0.27000000000000002" size="0.018" rgba=".52 .59 .64 1" contype="0" conaffinity="0" />
+          <geom type="sphere" size=".026" rgba=".15 .20 .25 1" contype="0" conaffinity="0" />
+          <body name="grip_3" pos="0 0 -0.27000000000000002">
+            <inertial pos="0 0 0" mass="0.4" diaginertia="1e-12 1e-12 1e-12" />
+            <site name="foot_3" size=".006" />
+            <geom type="box" pos="0 0 .013" size=".024 .012 .009" rgba=".2 .25 .29 1" contype="0" conaffinity="0" />
+            <geom name="jaw_3_-1" type="box" pos="-0.024 0 -0.001" size=".004 .012 .016" rgba=".1 .55 .3 1" contype="0" conaffinity="0" />
+            <geom name="jaw_3_1" type="box" pos="0.024 0 -0.001" size=".004 .012 .016" rgba=".1 .55 .3 1" contype="0" conaffinity="0" />
+          </body>
+        </body>
+      </body>
+    </body></body>
+    <geom name="root_support" type="box" pos="-.025 0 0" size=".025 .19 .19" rgba=".45 .48 .50 1" contype="0" conaffinity="0" />
+    <body name="fem_mode_0" pos="0 0 0">
+      <joint name="modal_eta_0" type="slide" axis="1 0 0" stiffness="191.84047913324417" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_1" pos="0 0 0">
+      <joint name="modal_eta_1" type="slide" axis="1 0 0" stiffness="191.8404791435363" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_2" pos="0 0 0">
+      <joint name="modal_eta_2" type="slide" axis="1 0 0" stiffness="7148.3230092934036" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_3" pos="0 0 0">
+      <joint name="modal_eta_3" type="slide" axis="1 0 0" stiffness="7148.3230093020666" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_4" pos="0 0 0">
+      <joint name="modal_eta_4" type="slide" axis="1 0 0" stiffness="45091.964360172991" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_5" pos="0 0 0">
+      <joint name="modal_eta_5" type="slide" axis="1 0 0" stiffness="51666.031869323248" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_6" pos="0 0 0">
+      <joint name="modal_eta_6" type="slide" axis="1 0 0" stiffness="51666.031869367638" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_7" pos="0 0 0">
+      <joint name="modal_eta_7" type="slide" axis="1 0 0" stiffness="58652.503887726336" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_8" pos="0 0 0">
+      <joint name="modal_eta_8" type="slide" axis="1 0 0" stiffness="177800.411698613" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_9" pos="0 0 0">
+      <joint name="modal_eta_9" type="slide" axis="1 0 0" stiffness="177800.41169862059" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_10" pos="0 0 0">
+      <joint name="modal_eta_10" type="slide" axis="1 0 0" stiffness="405100.39071722532" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_11" pos="0 0 0">
+      <joint name="modal_eta_11" type="slide" axis="1 0 0" stiffness="427212.53513543017" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_12" pos="0 0 0">
+      <joint name="modal_eta_12" type="slide" axis="1 0 0" stiffness="427212.535135452" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_13" pos="0 0 0">
+      <joint name="modal_eta_13" type="slide" axis="1 0 0" stiffness="522886.68839844275" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_14" pos="0 0 0">
+      <joint name="modal_eta_14" type="slide" axis="1 0 0" stiffness="826174.07974268321" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+    <body name="fem_mode_15" pos="0 0 0">
+      <joint name="modal_eta_15" type="slide" axis="1 0 0" stiffness="826174.07974274142" springref="0" damping="0" />
+      <inertial pos="0 0 0" mass="1" diaginertia="1e-6 1e-6 1e-6" />
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="motor_yaw_0" joint="yaw_0" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+    <motor name="motor_shoulder_0" joint="shoulder_0" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+    <motor name="motor_knee_0" joint="knee_0" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+    <motor name="motor_yaw_1" joint="yaw_1" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+    <motor name="motor_shoulder_1" joint="shoulder_1" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+    <motor name="motor_knee_1" joint="knee_1" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+    <motor name="motor_yaw_2" joint="yaw_2" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+    <motor name="motor_shoulder_2" joint="shoulder_2" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+    <motor name="motor_knee_2" joint="knee_2" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+    <motor name="motor_yaw_3" joint="yaw_3" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+    <motor name="motor_shoulder_3" joint="shoulder_3" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+    <motor name="motor_knee_3" joint="knee_3" gear="1" ctrllimited="true" ctrlrange="-40 40" />
+  </actuator>
+  <sensor>
+    <jointpos name="q_yaw_0" joint="yaw_0" />
+    <jointpos name="q_shoulder_0" joint="shoulder_0" />
+    <jointpos name="q_knee_0" joint="knee_0" />
+    <jointpos name="q_yaw_1" joint="yaw_1" />
+    <jointpos name="q_shoulder_1" joint="shoulder_1" />
+    <jointpos name="q_knee_1" joint="knee_1" />
+    <jointpos name="q_yaw_2" joint="yaw_2" />
+    <jointpos name="q_shoulder_2" joint="shoulder_2" />
+    <jointpos name="q_knee_2" joint="knee_2" />
+    <jointpos name="q_yaw_3" joint="yaw_3" />
+    <jointpos name="q_shoulder_3" joint="shoulder_3" />
+    <jointpos name="q_knee_3" joint="knee_3" />
+  </sensor>
+</mujoco>
